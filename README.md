@@ -182,6 +182,34 @@ docker-compose down
 
 ---
 
+## 🌐 Deploy to Production (FREE)
+
+### Option 1: Railway (Recommended)
+1. Go to [railway.app](https://railway.app) and sign up
+2. Click "Deploy from GitHub repo"
+3. Select this repository
+4. Add environment variables:
+   - `MONGODB_URI`: Your MongoDB Atlas connection string
+   - `SECRET_KEY`: A random secret key for production
+5. Railway will automatically build and deploy both frontend and backend
+6. Your app will be live at `https://your-app-name.up.railway.app`
+
+### Option 2: Render
+1. Go to [render.com](https://render.com) and sign up
+2. Create new "Web Service" from your GitHub repo
+3. Set build command: `docker-compose build`
+4. Set start command: `docker-compose up`
+5. Add the same environment variables as above
+
+### Option 3: Vercel + Railway
+- **Frontend**: Deploy React app on [vercel.com](https://vercel.com)
+- **Backend**: Deploy Flask API on [railway.app](https://railway.app)
+- Update frontend API URL to point to Railway backend
+
+**All these options are completely FREE for personal projects!**
+
+---
+
 ## 🚀 How to Use
 
 ### For Professors
