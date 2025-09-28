@@ -1,0 +1,53 @@
+Assignment: Database Management Systems
+
+Name: Shubh singh
+Student ID: 98765
+
+Introduction to Database Management Systems
+
+A Database Management System (DBMS) is software that provides an interface for users and applications to interact with databases. It serves as an intermediary between the database and its users, ensuring data integrity, security, and efficient access.
+
+Types of Database Models:
+
+1. Relational Database Model
+The relational model organizes data into tables with rows and columns. It uses SQL (Structured Query Language) for data manipulation and retrieval. Examples include MySQL, PostgreSQL, and Oracle Database.
+
+2. NoSQL Database Model
+NoSQL databases are designed to handle large volumes of unstructured or semi-structured data. They include document databases, key-value stores, column-family databases, and graph databases.
+
+Key Features of DBMS:
+
+1. Data Independence
+DBMS provides logical and physical data independence, allowing changes to be made at one level without affecting other levels.
+
+2. Data Security
+Access control mechanisms ensure that only authorized users can access specific data, maintaining confidentiality and integrity.
+
+3. Concurrent Access
+Multiple users can access the database simultaneously without conflicts through proper locking and transaction management.
+
+4. Backup and Recovery
+DBMS provides mechanisms to backup data and recover from system failures, ensuring data durability.
+
+5. Data Integrity
+Constraints and validation rules maintain data consistency and accuracy throughout the database.
+
+ACID Properties:
+
+1. Atomicity
+Transactions are treated as single units that either complete entirely or not at all.
+
+2. Consistency
+Database remains in a consistent state before and after transaction execution.
+
+3. Isolation
+Concurrent transactions do not interfere with each other.
+
+4. Durability
+Committed transactions are permanently stored and survive system failures.
+
+Conclusion
+
+Database Management Systems are essential components of modern information systems. They provide efficient, secure, and reliable data storage and retrieval mechanisms that support various applications and business processes.
+
+Understanding DBMS concepts is crucial for developing robust applications that can handle large amounts of data effectively while maintaining performance and reliability.

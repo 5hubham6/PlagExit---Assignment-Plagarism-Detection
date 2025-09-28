@@ -11,6 +11,7 @@ from routes.users import users_bp
 from routes.library import library_bp
 from routes.timetable import timetable_bp
 from routes.notifications import notifications_bp
+from routes.debug import debug_bp
 from config import Config
 import os
 import logging
@@ -135,6 +136,7 @@ app.register_blueprint(users_bp)
 app.register_blueprint(library_bp)
 app.register_blueprint(timetable_bp)
 app.register_blueprint(notifications_bp)
+app.register_blueprint(debug_bp)
 
 # Non-prefixed route handlers (to support both /api and non-/api routes)
 # Auth routes

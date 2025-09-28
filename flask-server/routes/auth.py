@@ -66,6 +66,8 @@ def register():
 def login():
     try:
         data = request.get_json()
+        logger.info(f"Login attempt - Raw data: {data}")
+        
         if not data:
             return jsonify({'error': 'No data provided'}), 400
 
@@ -73,17 +75,28 @@ def login():
         password = data.get('password')
         is_student = data.get('isStudent', True)
 
+        logger.info(f"Login attempt - Email: {email}, isStudent: {is_student}")
+
         if not email or not password:
             return jsonify({'error': 'Email and password are required'}), 400
 
         # Find user
         user = User.objects(email=email).first()
+        logger.info(f"User found: {user.email if user else 'None'}")
+        
+        if user:
+            logger.info(f"User details - Type: {user.user_type}, Is Professor: {user.is_professor}")
+            
         if not user or not user.check_password(password):
+            logger.info("Authentication failed - Invalid credentials")
             return jsonify({'error': 'Invalid email or password'}), 401
 
         # Verify user type
+        logger.info(f"Type check - is_student: {is_student}, user.user_type: {user.user_type}")
+        
         if is_student != (user.user_type == 'student'):
             portal_type = 'student' if is_student else 'professor'
+            logger.info(f"Portal mismatch - Expected: {portal_type}, User type: {user.user_type}")
             return jsonify({'error': f'Please use the {user.user_type} portal to login'}), 401
 
         # Set session data

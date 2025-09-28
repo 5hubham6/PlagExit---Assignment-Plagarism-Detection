@@ -16,7 +16,12 @@ const Login = ({ userType = 'student' }) => {
     setIsLoading(true);
 
     try {
-      await login(email, password, userType === 'professor');
+      const credentials = {
+        email: email,
+        password: password,
+        isStudent: userType !== 'professor'
+      };
+      await login(credentials);
       navigate(userType === 'professor' ? '/professor/dashboard' : '/student/dashboard');
     } catch (err) {
       setError(err.message || 'Failed to login. Please try again.');

@@ -1,0 +1,70 @@
+Assignment: Software Engineering Fundamentals - Midterm Exam
+Course: CS-301 Software Engineering
+Instructor: Prof. Smith
+Date: September 28, 2025
+Total Marks: 100
+Duration: 3 Hours
+
+Instructions:
+- Answer all questions
+- Show all your work and reasoning
+- Use proper terminology and concepts
+- Examples should be relevant and well-explained
+
+===========================================
+
+Question 1: Software Development Life Cycle (20 marks)
+
+a) Define the Software Development Life Cycle (SDLC) and explain its importance in software engineering. (5 marks)
+
+b) Compare and contrast the Waterfall model with the Agile methodology. Include advantages and disadvantages of each approach. (10 marks)
+
+c) Given a scenario where you need to develop a mobile banking application, which SDLC model would you choose and why? Justify your answer with specific reasons. (5 marks)
+
+===========================================
+
+Question 2: Object-Oriented Programming Principles (25 marks)
+
+a) Explain the four fundamental principles of Object-Oriented Programming (OOP). Provide a real-world analogy for each principle. (12 marks)
+
+b) Write a Java class diagram and corresponding code for a "Vehicle" hierarchy that demonstrates inheritance and polymorphism. Include at least three classes: Vehicle (parent), Car, and Motorcycle (children classes). (13 marks)
+
+===========================================
+
+Question 3: Software Design Patterns (20 marks)
+
+a) What are design patterns in software engineering? Explain why they are important. (5 marks)
+
+b) Describe the Singleton design pattern with a practical example. Include UML diagram and Java implementation. (10 marks)
+
+c) Compare the Observer pattern with the Factory pattern. When would you use each? (5 marks)
+
+===========================================
+
+Question 4: Software Testing and Quality Assurance (20 marks)
+
+a) Differentiate between Unit Testing, Integration Testing, and System Testing. Provide examples of what each type tests. (8 marks)
+
+b) Explain Test-Driven Development (TDD). What are its advantages and potential challenges? (7 marks)
+
+c) Design test cases for a simple login functionality that validates username and password. Include both positive and negative test cases. (5 marks)
+
+===========================================
+
+Question 5: Software Requirements Engineering (15 marks)
+
+a) What are functional and non-functional requirements? Provide three examples of each for an e-commerce website. (8 marks)
+
+b) Explain the importance of requirements validation and verification in software development. (4 marks)
+
+c) List and briefly describe three techniques for requirements gathering. (3 marks)
+
+===========================================
+
+Additional Instructions:
+- Use diagrams where appropriate
+- Cite any references if used
+- Ensure your answers demonstrate understanding of concepts, not just memorization
+- Total word count should be approximately 2500-3000 words
+
+Good Luck!
