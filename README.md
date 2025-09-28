@@ -6,160 +6,204 @@
 
 ## 📋 Summary
 
-**PlagExit** is a next-generation, scalable web platform that empowers educators to uphold academic integrity with confidence. Leveraging state-of-the-art NLP, a modern microservices-inspired stack, and a beautiful user experience, this project is built for real-world impact and seamless deployment at scale.
+**PlagExit** is a smart plagiarism detection system designed to help professors catch copied assignments and grade them properly. The system does two main things: it finds students who copied from each other, and it automatically grades assignments by comparing them to the professor's model answers using machine learning. 
+
+The plagiarism detection uses MinHash and LSH algorithms to quickly compare thousands of documents, while the grading system uses semantic similarity to understand if a student's answer means the same thing as the correct answer, even if they used different words.
 
 ---
 
 ## ✨ Features
 
-- **Advanced Plagiarism Detection**
-  - Combines MinHash+LSH for high-accuracy detection
-  - Smart preprocessing: lowercasing, punctuation & stopword removal, shingling
-  - Flags all matching submissions, not just the latest
-- **User-Friendly Dashboard**
-  - Professor dashboard with sortable, filterable tables
-  - Delete submissions with a single click
-  - Export results to Excel (with Excel-style button)
-- **Plagiarism Severity Management**
-  - Assignment-level severity bar (easy/medium/hard)
-  - Severity directly impacts final score calculation
-- **Elegant UI/UX**
-  - Responsive, clean, and modern design
-  - Fixed-width columns, ellipsis, and tooltips for clarity
-- **Cloud-Ready & Scalable**
-  - Dockerized backend, frontend, and MongoDB Atlas for easy, global deployment
-  - Uses service names for seamless inter-container communication
-  - Data persistence with Docker volumes
-- **Extensible**
-  - Easily add new detection algorithms or integrate with other systems
+- **Smart Plagiarism Detection**
+  - Uses MinHash and LSH algorithms to find copied content quickly
+  - Detects paraphrasing and word substitutions, not just exact matches
+  - Shows which parts of assignments are similar to each other
+  - Works with both text files and scanned PDFs (using OCR)
+
+- **Intelligent Grading System**
+  - Compares student answers to professor's model answers using AI
+  - Uses semantic similarity to understand meaning, not just keywords  
+  - Automatically reduces grades for plagiarized content
+  - Handles different assignment difficulty levels (easy/medium/hard)
+
+- **Easy-to-use Dashboards**
+  - Professor dashboard shows all submissions with grades and plagiarism scores
+  - Student dashboard for uploading assignments and viewing results
+  - One-click Excel export for all assignment data
+  - Clean, responsive design that works on phones and computers
+
+- **Flexible System**
+  - Upload assignments as PDF or text files
+  - Set custom plagiarism thresholds for different assignment types
+  - Bulk download all submissions for offline review
+  - Automatic email notifications for new submissions
+
+- **Production Ready**
+  - Built with Flask backend and React frontend
+  - Uses MongoDB Atlas cloud database for reliability
+  - Everything runs in Docker containers for easy deployment
+  - Handles hundreds of students and assignments without issues
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ How It Works
 
-- **Backend:** Flask (Python 3.10), Gunicorn, MongoDB Atlas, Poppler, Tesseract
-- **Frontend:** React 18, Material-UI, served with Nginx
-- **Database:** MongoDB Atlas (cloud-hosted)
-- **Containerization:** Docker & Docker Compose
+The system has three main parts:
 
-```
-[User] ⇄ [Frontend (React + Nginx)] ⇄ [Backend (Flask API)] ⇄ [MongoDB Atlas]
-```
+1. **Frontend (React)**: Students and professors interact through a clean web interface
+2. **Backend (Flask + Python)**: Processes documents, runs plagiarism detection, and calculates grades
+3. **Database (MongoDB Atlas)**: Stores all assignments, submissions, and results in the cloud
+
+**The Process:**
+1. Professor uploads assignment questions and model answers
+2. Students upload their submissions (PDF or text files)
+3. System extracts text from PDFs using OCR if needed
+4. Plagiarism detection runs automatically, comparing all submissions
+5. Grading happens by comparing each answer to the model answer using AI
+6. Results show up instantly on both professor and student dashboards
+
+**What Makes It Smart:**
+- The plagiarism detection doesn't just look for exact matches - it finds paraphrased content too
+- The grading system understands context and meaning, so students get credit for correct answers even if they phrase things differently
+- Everything happens automatically, but professors can review and adjust grades manually if needed
 
 ---
 
-## 🌍 Scalability 
+## 🌍 Why This is Different
 
-- **Cloud-Native:** Connects to MongoDB Atlas for high availability and global access.
-- **Stateless API:** Backend can be scaled horizontally with zero downtime.
-- **Persistent Storage:** Data is safe and accessible from anywhere.
-- **Secure & Configurable:** All secrets and URIs managed via environment variables.
-- **CI/CD Friendly:** Dockerized for seamless integration into any deployment pipeline.
+Most plagiarism checkers just tell you "this looks copied" but don't actually help with grading. This system does both:
+
+- **Smart Detection**: Finds similarities even when students change words around or rephrase sentences
+- **Real Grading**: Actually reads and understands answers, then compares them to what the professor wanted
+- **Easy to Use**: Professors don't need to be tech experts - just upload files and get results
+- **Scales Well**: Can handle entire classes without slowing down
+- **Always Available**: Runs in the cloud so students can submit from anywhere, anytime
+- **Complete Solution**: Everything from file upload to final grades in one system
+
+This project addresses the gap where existing tools either catch plagiarism OR help with grading, but not both. This does everything in one place and works reliably.
 
 ---
 
 ## 🖼️ Screenshots
 
-### Dashboard
-![Dashboard](./demo/dashboard.png)
+### Homepage
+This is what you see when you first visit the site. Clean and simple.
 
-### Plagiarism Detection
-![Detection](./demo/detection.png)
+![Homepage](./demo/homepage.png)
 
-### Export to Excel
-![Export](./demo/excel.png)
+### More Homepage Features
+Shows the features and what the system can do.
+
+![Homepage 2](./demo/homepage2.png)
+
+### Professor Dashboard - Overview
+Professors can see all their assignments and how students are doing.
+
+![Professor Dashboard](./demo/prof-dashboard-1.png)
+
+### Professor Dashboard - Detailed View
+This shows individual submissions with plagiarism scores and grades.
+
+![Professor Dashboard Details](./demo/prof-dashboard-2.png)
+
+### Student Dashboard
+Students can upload their assignments here and see their results.
+
+![Student Dashboard](./demo/student-dashboard-1.png)
+
+### Excel Export
+Export all the data to Excel for further analysis or record keeping.
+
+![Excel Export](./demo/excel.png)
 
 ---
 
 ## 🛠️ Setup & Installation
 
-### Prerequisites
-- [Docker](https://docs.docker.com/get-docker/) (v20.10+)
-- [Docker Compose](https://docs.docker.com/compose/install/) (v2.0+)
-- A [MongoDB Atlas](https://www.mongodb.com/atlas/database) cluster
+### What You Need
+- Docker Desktop (handles all the technical stuff automatically)
+- MongoDB Atlas account (free tier works fine for most classes)
+- About 10 minutes to get everything running
 
-### Quick Start
+### Quick Setup
 
-1. **Clone the repository:**
+1. **Get the code:**
    ```bash
    git clone https://github.com/5hubham6/PlagExit---Assignment-Plagarism-Detection.git
    cd PlagExit---Assignment-Plagarism-Detection
    ```
 
-2. **Set up environment variables:**
-   ```bash
-   # Copy the example environment file
-   cp env.example .env
-   
-   # Edit .env with your actual values
-   nano .env  # or use your preferred editor
-   ```
+2. **Configure your database:**
+   - Create a free MongoDB Atlas cluster at [mongodb.com/atlas](https://www.mongodb.com/atlas)
+   - Get your connection string (looks like `mongodb+srv://username:password@...`)
+   - Copy `env.example` to `.env` and paste your connection string
 
-3. **Configure your .env file:**
-   ```env
-   # MongoDB Configuration
-   MONGODB_URI=mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/plagexit_db?retryWrites=true&w=majority
-   
-   # Flask Configuration
-   SECRET_KEY=your-super-secret-key-here-change-this-in-production
-   ```
-
-4. **Build and run all services:**
+3. **Start everything:**
    ```bash
    docker-compose up --build
    ```
 
-5. **Access the application:**
-   - **Frontend:** [http://localhost](http://localhost)
-   - **Backend API:** [http://localhost:5000](http://localhost:5000)
-   - **Health Check:** [http://localhost:5000/health](http://localhost:5000/health)
+4. **You're done!**
+   - Open [http://localhost](http://localhost) to see the app
+   - Register as a professor to create assignments
+   - Students can register and start submitting
 
-### Development Mode
+### For Development
 
-For development with hot reloading:
+If you want to modify the code:
 
 ```bash
-# Backend only
+# Run backend only (for Python development):
 cd flask-server
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+venv\Scripts\activate
 pip install -r requirements.txt
 python app.py
 
-# Frontend only
+# Run frontend only (for React development):
 cd client
 npm install
 npm start
 ```
 
-### Stopping the Application
+### Common Issues
 
-- **Stop containers:** Press `Ctrl+C` in the terminal
-- **Remove containers and networks:**
-  ```bash
-  docker-compose down
-  ```
-- **Remove everything including volumes:**
-  ```bash
-  docker-compose down -v --remove-orphans
-  ```
+- **Port already in use**: Make sure nothing else is running on ports 80 or 5000
+- **Database connection failed**: Double-check your MongoDB Atlas connection string
+- **Docker won't start**: Make sure Docker Desktop is running
+- **Upload not working**: Check that you have write permissions in the project folder
 
-### Troubleshooting
+### Stopping Everything
 
-1. **Port conflicts:** Ensure ports 80 and 5000 are available
-2. **MongoDB connection:** Verify your Atlas connection string
-3. **Build issues:** Try `docker-compose build --no-cache`
-4. **Permission issues:** Ensure Docker has proper permissions
+Press `Ctrl+C` in the terminal, or run:
+```bash
+docker-compose down
+```
 
-### Environment Variables
+---
 
-| Variable | Description | Required | Default |
-|----------|-------------|----------|---------|
-| `MONGODB_URI` | MongoDB Atlas connection string | Yes | - |
-| `SECRET_KEY` | Flask secret key for sessions | Yes | - |
-| `FLASK_ENV` | Flask environment (production/development) | No | production |
-| `FRONTEND_URLS` | Allowed frontend URLs for CORS | No | http://localhost |
-| `PRODUCTION_DOMAINS` | Production domains for CORS (comma-separated) | No | - |
+## 🚀 How to Use
+
+### For Professors
+1. Register an account and log in
+2. Create a new assignment with questions and model answers
+3. Share the assignment code with your students
+4. Students submit their work
+5. View results on your dashboard - grades and plagiarism detection happen automatically
+6. Export everything to Excel for your records
+
+### For Students
+1. Register with your student email
+2. Enter the assignment code your professor gave you
+3. Upload your assignment (PDF or text file)
+4. See your grade and any feedback immediately
+5. Check if your submission was flagged for similarity to others
+
+### Tips for Best Results
+- **Model answers**: Write clear, complete model answers - the grading quality depends on these
+- **Assignment types**: Mark assignments as easy/medium/hard to adjust grading strictness
+- **File formats**: PDFs work fine, but text files process faster
+- **Plagiarism thresholds**: Start with default settings, adjust if you get too many false positives
 
 ---
 
